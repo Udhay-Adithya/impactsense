@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impactsense/bt/scan_screen.dart';
+import 'package:impactsense/utils/theme/themes.dart';
 
 import 'utils/components/bottom_nav_bar.dart';
 
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
-      home: BottomNavBar(),
+      theme: lightTheme,
+      home: const BottomNavBar(),
     );
   }
 }
