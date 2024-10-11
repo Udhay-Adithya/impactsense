@@ -14,6 +14,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "carousel_slider",
+      "rootUri": "file:///Users/udhayxd/.pub-cache/hosted/pub.dev/carousel_slider-5.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///Users/udhayxd/.pub-cache/hosted/pub.dev/characters-1.3.0",
       "packageUri": "lib/",
@@ -182,7 +188,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-10T19:26:57.231228Z",
+  "generated": "2024-10-11T06:37:14.481931Z",
   "generator": "pub",
   "generatorVersion": "3.5.2",
   "flutterRoot": "file:///Users/udhayxd/tools/flutter",

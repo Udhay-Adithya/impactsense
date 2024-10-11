@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../bt/scan_screen.dart';
 import '../utils/components/battery_percentage_indicator.dart';
 import '../utils/components/devices_tag.dart';
 import '../utils/devices.dart';
@@ -32,7 +33,7 @@ class DevicesPage extends StatelessWidget {
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontSize: 24,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
                         TextSpan(
@@ -40,7 +41,7 @@ class DevicesPage extends StatelessWidget {
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontSize: 24,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -62,7 +63,13 @@ class DevicesPage extends StatelessWidget {
                         ),
                         splashRadius: 30,
                         color: Colors.black,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (builder) => const ScanScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
