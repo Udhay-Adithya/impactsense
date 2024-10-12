@@ -18,6 +18,7 @@ class DevicesPage extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.surface,
             expandedHeight: 100,
             elevation: 0,
+            automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
