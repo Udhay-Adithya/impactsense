@@ -22,9 +22,12 @@ class _DeviceScreenState extends State<DeviceScreen> {
   @override
   void initState() {
     _readSubscription = widget.connection.input?.listen((event) {
-      if (mounted) {
-        setState(() => _receivedInput.add(utf8.decode(event)));
-      }
+      log('Connection established: ${widget.connection.isConnected}');
+
+      setState(() => _receivedInput.add(utf8.decode(event)));
+      log('Raw input: ${utf8.decode(event)}');
+
+      log("Receiving inputs");
     });
     super.initState();
   }
@@ -64,10 +67,20 @@ class _DeviceScreenState extends State<DeviceScreen> {
           const Divider(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text("Received data",
-                style: Theme.of(context).textTheme.titleLarge),
+            child: Text(
+              "Received data",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
           ),
-          for (String input in _receivedInput) Text(input),
+          for (String input in _receivedInput)
+            Text(
+              input,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
         ],
       ),
     );

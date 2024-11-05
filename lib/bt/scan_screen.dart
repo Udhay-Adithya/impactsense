@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_classic/flutter_blue_classic.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'device_screen.dart';
 
 class ScanScreen extends StatefulWidget {
@@ -31,9 +33,23 @@ class _MainScreenState extends State<ScanScreen> {
     initPlatformState();
   }
 
+  getLocationPermission() async {
+    PermissionStatus locationPermissionStatus =
+        await Permission.locationAlways.status;
+
+    if (locationPermissionStatus.isDenied) {
+      Permission.location.request();
+      Permission.locationAlways.request();
+    }
+    if (locationPermissionStatus.isLimited) {
+      Permission.location.request();
+      Permission.locationAlways.request();
+    }
+  }
+
   Future<void> initPlatformState() async {
     BluetoothAdapterState adapterState = _adapterState;
-
+    getLocationPermission();
     try {
       adapterState = await _flutterBlueClassicPlugin.adapterStateNow;
       _adapterStateSubscription =
@@ -129,16 +145,28 @@ class _MainScreenState extends State<ScanScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
+        elevation: 0,
         onPressed: () {
+          getLocationPermission();
           if (_isScanning) {
             _flutterBlueClassicPlugin.stopScan();
+            log("Stopped Scan");
           } else {
             _scanResults.clear();
             _flutterBlueClassicPlugin.startScan();
+            log("Started Scan");
           }
         },
-        label: Text(_isScanning ? "Scanning..." : "Start device scan"),
-        icon: Icon(_isScanning ? Icons.bluetooth_searching : Icons.bluetooth),
+        label: Text(
+          _isScanning ? "Scanning..." : "Start device scan",
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+        icon: Icon(
+          _isScanning ? Icons.bluetooth_searching : Icons.bluetooth,
+          color: Theme.of(context).colorScheme.primary,
+        ),
       ),
     );
   }

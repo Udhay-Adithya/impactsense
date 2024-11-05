@@ -12,7 +12,7 @@ class AlertsCarouselState extends State<AlertsCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 125,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        EmergencyButton(),
+        const EmergencyButton(),
         SliverToBoxAdapter(
           child: Column(
             children: [
@@ -145,6 +145,11 @@ class HomePage extends StatelessWidget {
         ),
         const SliverToBoxAdapter(
           child: AlertsCarousel(),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: 48,
+          ),
         )
       ],
     ));

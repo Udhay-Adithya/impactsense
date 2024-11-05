@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:impactsense/utils/navigation/navigation.dart';
+
+import '../../pages/emergency_alert_page.dart';
 
 class EmergencyButton extends StatefulWidget {
+  const EmergencyButton({super.key});
+
   @override
-  _EmergencyButtonState createState() => _EmergencyButtonState();
+  EmergencyButtonState createState() => EmergencyButtonState();
 }
 
-class _EmergencyButtonState extends State<EmergencyButton>
+class EmergencyButtonState extends State<EmergencyButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -39,6 +44,10 @@ class _EmergencyButtonState extends State<EmergencyButton>
           GestureDetector(
             onTapDown: (_) {
               _controller.reverse(); // Start the "press" animation
+              nav(
+                context,
+                const EmergencyAlertPage(),
+              );
             },
             onTapUp: (_) {
               _controller.forward(); // Return to normal size

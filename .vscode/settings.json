@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/Users/udhayxd/Projects/impactsense/windows/flutter"
+    "cmake.sourceDirectory": "/Users/udhayxd/Projects/impactsense/windows/flutter",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

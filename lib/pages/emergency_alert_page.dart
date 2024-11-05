@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:impactsense/utils/navigation/navigation.dart';
 import '../utils/components/bottom_nav_bar.dart';
 
 class EmergencyAlertPage extends StatefulWidget {
@@ -89,8 +90,25 @@ class _EmergencyAlertPageState extends State<EmergencyAlertPage> {
             const SizedBox(
               height: 12,
             ),
-            Text(
-              "$countDown",
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              margin: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(80.0),
+                child: Text(
+                  "$countDown",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 36,
+                  ),
+                ),
+              ),
             ),
             const SizedBox(
               height: 12,
@@ -155,13 +173,10 @@ class _EmergencyAlertPageState extends State<EmergencyAlertPage> {
             ElevatedButton.icon(
               onPressed: () {
                 _timer?.cancel();
-                Navigator.push(
+                nav(
                   context,
-                  MaterialPageRoute(
-                    builder: (builder) => const BottomNavBar(),
-                  ),
+                  const BottomNavBar(),
                 );
-                // Cancel emergency alert action here
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
